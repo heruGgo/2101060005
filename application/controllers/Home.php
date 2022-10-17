@@ -7,5 +7,9 @@
         public function tampil(){
             return $this->load->view('v_tampil');
         }
+
+        public function form(){
+            echo "form input";
+        }
     }
 ?>
