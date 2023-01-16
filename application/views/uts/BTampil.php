@@ -12,21 +12,23 @@
     <div class="container">
         <h1 style="text-align: center" class="alert alert-primary" role="alert">Data Mahasiswa</h1>
 
-        <a href="<?= site_url('latihan/tambah') ?>" class="btn btn-primary">Tambah</a><br><br>
+        <a href="<?= site_url('controllerb/tambah') ?>" class="btn btn-primary">Tambah</a><br><br>
 
         <table class="table table-bordered" border="1" cellpadding="7">
             <thead>
                 <th>Id</th>
-                <th>Nama</th>
-                <th>Nim</th>
+                <th>kolom_jurusan</th>
+                <th>kolom_kelas</th>
+                <th>kolom_isi</th>
             </thead>
             <tbody>
                 <?php $nomor = 1; ?>
-                <?php foreach($contoh as $cth) :?>
+                <?php foreach($data as $dt) :?>
                     <tr>
                         <td><?php echo $nomor++; ?></td>
-                        <td><?php echo $cth->nama; ?></td>
-                        <td><?php echo $cth->nim; ?></td>
+                        <td><?php echo $dt->kolom_jurusan; ?></td>
+                        <td><?php echo $dt->kolom_kelas; ?></td>
+                        <td><?php echo $dt->kolom_isi; ?></td>
                     </tr>
                 <?php endforeach;?>
             </tbody>

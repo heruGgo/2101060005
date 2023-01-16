@@ -11,16 +11,22 @@
     
     <div class="container-md">
         <h2 class="alert alert-info">Data Aset</h2>
+        <hr>
 
-        <a href="<?php echo site_url('aset/tambah'); ?>" class="mb-2 float-end btn btn-primary">Tambah Data</a>
+        <?php if($this->session->userdata('level') != 'operator') :?>
+        <a href="<?php echo site_url('aset/tambah'); ?>" class="mb-2 float-end btn btn-primary">Tambah Data</a><br><br>
+        <?php endif; ?>
 
-        <table class="table table-bordered">
+        <a href="<?= site_url('login/logout') ?>" class="mb-2 float-end btn btn-warning" onclick="return confirm('yakin?')">Logout</a>
+
+        <table class="table table-bordered" border=1 cellpadding=10 cellspacing=0>
             <thead>
                 <th>Id</th>
                 <th>Nama Aset</th>
                 <th>Jenis</th>
                 <th>Lokasi</th>
                 <th>Jumlah</th>
+                <th>Aksi</th>
             </thead>
             <tbody>
                 <?php $nomor = 1;?>
@@ -31,10 +37,17 @@
                     <td><?php echo $item->jenis; ?></td>
                     <td><?php echo $item->lokasi; ?></td>
                     <td><?php echo $item->jumlah; ?></td>
+                    <td>
+                        <a href="<?= site_url('aset/edit/' . $item->id) ?>" class="btn btn-warning">Edit</a> |
+                        <a href="<?= site_url('aset/delete/' . $item->id) ?>" class="btn btn-danger" onclick = "return confirm('anda yakin?')">Delete</a>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
+
+        Selamat Datang : <?= $this->session->userdata('nama_lengkap'); ?>
+
     </div>
 
 </body>
